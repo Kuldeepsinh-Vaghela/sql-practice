@@ -29,3 +29,13 @@ In other words, group the users by the number of tweets they posted in 2022 and 
 | 1 | 2 | 
 | 2 | 1 |
 
+## SQL Query:
+```sql
+select tweet_bucket, count(sub_1.user_id) as user_num
+from (SELECT user_id , count(tweet_id) as tweet_bucket
+FROM tweets
+where tweet_date between '01/01/2022 00:00:00' and '12/31/2022 24:00:00'
+group by user_id) as sub_1
+group by tweet_bucket
+
+
