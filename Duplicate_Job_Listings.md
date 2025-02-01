@@ -49,13 +49,6 @@ This query helps identify companies with potentially redundant or duplicate job 
 
 ## SQL Query:
 ```sql
--- SELECT count(company_id) as duplicate_companies
--- FROM job_listings
--- except
--- select count(distinct(company_id))
--- from job_listings
-
-
 select count(company_id) as duplicate_companies
 from
 (select company_id,title,  count(title) as job_count
